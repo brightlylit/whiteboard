@@ -3,25 +3,20 @@ const cssRef = React.forwardRef((props, ref)=>{
     
 })
 class Chat extends Component {
-   
+    
     render(){
         
         return (
             
             <div>
                 {this.props.spanVal.map((el, i)=> {
-                    return (
-                        
+                    return (                     
                         <p 
                         className={ this.props.pClassName } 
-                       
                         key={ i }>
                             { el }
-                            </p>
-                        
-                       
-                    )
-                    
+                        </p>                                       
+                    )    
                 })}
                 <input type="text"
                     onChange = {this.props.onChange} 
@@ -29,10 +24,8 @@ class Chat extends Component {
                 <button type="submit"
                     onClick = {this.props.onClick}
                 >submit
-                </button><br/>
-                
+                </button>
             </div>
-
         )
     }
 }
