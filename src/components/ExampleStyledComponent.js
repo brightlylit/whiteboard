@@ -22,6 +22,8 @@ export const NewCol = styled.div`
     flex: ${(props) => props.size};
     border:2px solid black;
     margin-left:20px;
+    margin-top:10px;
+    padding:10px;
     
 `;
 export const InnerCol = styled.div`

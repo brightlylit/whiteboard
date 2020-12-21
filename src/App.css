@@ -15,36 +15,37 @@ html {
 }
 
 .column {
-  position: absolute;
+  /*position: absolute;
   top: 20px;
   bottom: 0px;
   padding: 10px;
   overflow-y: auto;
   overflow-x: auto;
-}
+  border-right: solid 2px black;*/
+}/*
 .hiddenOverflowColumn{
   position: absolute;
   top: 20px;
   bottom: 90px;
   padding: 10px;
-  /*overflow-y: auto; 
-  overflow-x: auto;*/
-  background: #aaa;
+  overflow-y: auto; 
+  overflow-x: hidden; 
+  background: white;
   right: 0;
   width: 460px;
 }    
 .left {
-  background: #aaa;
+  background: white;
   left: 0;
   width: 400px;
 }
 .center {
-  background: #888;
-  left: 400px; /* = width + 2 * padding of left column */
-  right: 450px; /* = width + 2 * padding of right column */
+  background: white;
+  left: 400px; 
+  right: 450px; 
   overflow-y: auto; 
   overflow-x: auto
-}
+}*/
 
 #footer {
   background: #ddd;

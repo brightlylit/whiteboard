@@ -1,15 +1,13 @@
 import React, { Component } from "react";
 import socketIOClient from "socket.io-client";
 import Chat from './components/Chat';
-import Canvas from './components/Canvas'
+import Canvas from './components/Canvas';
 import JoinRoom from './components/JoinRoom'
 import CreateRoom from './components/CreateRoom';
-import MaterialsChooser from './components/MaterialsChooser'
 import DisplayImage from './components/DisplayImage'
 import Raphael from "raphael";
-import { Grid, Row, Col, NewCol, InnerCol } from './components/ExampleStyledComponent';
 import './App.css';
-import { ReadPreference } from "mongodb";
+import {Grid, Row, Col, NewCol} from './components/ExampleStyledComponent'
 
 
 class App extends Component {
@@ -51,9 +49,9 @@ class App extends Component {
     this.socket.on("mouse_position_update", data => {
       let p = document.getElementById('containerHolder');
       let mousex = data.mx - p.offsetLeft
-      let mousey = data.my - p.offsetTop - 30
+      let mousey = data.my - p.offsetTop - 20
       switch(data.canvasData){
-        case "stress marker": let cir = this.paper.circle(mousex - 10, mousey, 5).attr({fill:"red"});
+        case "stress marker": let cir = this.paper.circle(mousex - 30, mousey, 5).attr({fill:"red"});
         break;
         case "syllable marker": let cir2 = this.paper.circle(mousex - 10, mousey, 5).attr({fill:"black"});
         break;
@@ -93,13 +91,8 @@ class App extends Component {
     this.setState({chatData:event.target.value}) 
   }
   onCanvasInputChange = (event) =>{
-    //if(event.target.id === 'mySelect'){
-      console.log("onCanvasInputChange: ",event.target.value)
       this.setState({canvasData:event.target.value})    
-    //}
-    //if(event.target.id === "myInput"){
-    //  this.setState({canvasData:event.target.value})
-    //} 
+   
   }
  
   canvasOnClick = (e) => {
@@ -123,46 +116,58 @@ class App extends Component {
  
   render(){
     return (
-        <div className="container">
+      <Grid>
+        <Row>
           <div className="header">
-            
-            <CreateRoom
-              createTheRoom={this.createTheRoom}
-            />
-            <JoinRoom
-              joinTheRoom={this.joinTheRoom}
-            />    
-          </div> 
-          <div className="column left" id="imgHolder">
-            {/*<MaterialsChooser/>*/}
-            <DisplayImage
-              imgSrc={this.state.image}
-              changeImage={this.onImageChange}
-              myHeight={this.state.imageHeight}
-            />
-            <span>æ</span><span>ɒ</span><span>b</span><span>ð</span>eəfɡıkŋprsʤ
+              
+              <CreateRoom
+                createTheRoom={this.createTheRoom}
+              />
+              <JoinRoom
+                joinTheRoom={this.joinTheRoom}
+              />    
           </div>
-          <div className="column center">
-            <Chat
-              pClassName={ this.state.pClassName }
-              spanVal={ this.state.inData } 
-              onChange={ this.onChangeHandler }
-              onClick={ this.onClickHandler }
-              idCorrect={"Correct"}
-              idInCorrect={"Incorrect"}
-            /> 
-          </div>
-          <div id="containerHolder" className="hiddenOverflowColumn">
-            <Canvas
-              onClick={this.canvasOnClick}
-              id={"mycontainer"}
-              canvasInputChangeData={this.onCanvasInputChange}
-            />
-          </div>
-            
+        </Row>
+        <Row>
+          <NewCol>
+            <div className="column left" id="imgHolder">
+              {/*<MaterialsChooser/>*/}
+              <DisplayImage
+                imgSrc={this.state.image}
+                changeImage={this.onImageChange}
+                myHeight={this.state.imageHeight}
+              />
+              <span>æ</span><span>ɒ</span><span>b</span><span>ð</span>eəfɡıkŋprsʤ
+            </div>
+          </NewCol>
+          <NewCol>
+            <div className="column center">
+              <Chat
+                pClassName={ this.state.pClassName }
+                spanVal={ this.state.inData } 
+                onChange={ this.onChangeHandler }
+                onClick={ this.onClickHandler }
+                idCorrect={"Correct"}
+                idInCorrect={"Incorrect"}
+              /> 
+            </div>
+          </NewCol>
+          <NewCol>
+            <div id="containerHolder" className="hiddenOverflowColumn">
+              <Canvas
+                onClick={this.canvasOnClick}
+                id={"mycontainer"}
+                canvasInputChangeData={this.onCanvasInputChange}
+              />
+            </div>
+          
+          </NewCol>
+        </Row>
+       
+        
 
-                
-        </div>
+      </Grid>
+        
          
           
          
