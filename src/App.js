@@ -8,12 +8,14 @@ import DisplayImage from './components/DisplayImage'
 import Raphael from "raphael";
 import './App.css';
 import {Grid, Row, Col, NewCol} from './components/ExampleStyledComponent'
+import { createBrowserHistory } from 'history';
+import { Route } from 'react-router-dom';
 
 
 class App extends Component {
   constructor(props){
     super(props)
-    this.ENDPOINT = "http://127.0.0.1:3001";
+    this.ENDPOINT = "http://localhost:3001";
     this.socket = socketIOClient(this.ENDPOINT);
     this.onClickHandler = this.onClickHandler.bind(this)
     this.onChangeHandler = this.onChangeHandler.bind(this)
@@ -91,7 +93,7 @@ class App extends Component {
     this.setState({chatData:event.target.value}) 
   }
   onCanvasInputChange = (event) =>{
-      this.setState({canvasData:event.target.value})    
+    this.setState({canvasData:event.target.value})    
    
   }
  
@@ -179,7 +181,9 @@ class App extends Component {
 
 
 export default App;
-
+//export const history = createBrowserHistory({
+//  basename: process.env.PUBLIC_URL
+//});
 /*<p>
       <span>{response}</span><br/>
       <input value={} type="text"/>
