@@ -175,9 +175,9 @@ class App extends Component {
 
 
 export default App;
-//export const history = createBrowserHistory({
-//  basename: process.env.PUBLIC_URL
-//});
+export const history = createBrowserHistory({
+  basename: process.env.PUBLIC_URL
+});
 /*<p>
       <span>{response}</span><br/>
       <input value={} type="text"/>
