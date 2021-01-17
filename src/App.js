@@ -168,13 +168,7 @@ class App extends Component {
        
         
 
-      </Grid>
-        
-         
-          
-         
-          
-      
+      </Grid>  
     )
   } 
 }
