@@ -118,7 +118,8 @@ class App extends Component {
  
   render(){
     return (
-      <Grid>
+      <Route history = {history}>
+        <Grid>
         <Row>
           <div className="header">
               
@@ -168,7 +169,9 @@ class App extends Component {
        
         
 
-      </Grid>  
+      </Grid>
+      </Route>
+        
     )
   } 
 }
